@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+
+<html lang="en">
+    <head>
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap" rel="stylesheet">
+        <link href="styles.css" rel="stylesheet">
+        <title>Trivia!</title>
+
+        <script>
+
+            // TODO: Add code to check answers to questions
+            document.addEventListener("DOMContentLoaded", function(){
+
+                let incorrect = document.querySelectorAll(".incorrect");
+                let correct = document.querySelector("#answer");
+                let message = document.querySelector("#message");
+
+                // correct answer turns green
+                correct.addEventListener("click", function(){
+                    correct.style.backgroundColor = "green";
+                    message.innerHTML = "Correct!";
+                })
+
+                // incorrect answer turns red
+                for (let i = 0; i < incorrect.length;i += 1)
+                {
+                    incorrect[i].addEventListener("click", function(){
+                        incorrect[i].style.backgroundColor = "red"
+                        message.innerHTML = "Incorrect";
+                    });
+                }
+
+                // free response
+                let push = document.querySelector("#button2");
+                push.addEventListener("click", function(){
+                    let country = document.querySelector("#response");
+                    let message2 = document.querySelector("#message2");
+                    if (country.value == "Swizerland" || country.value == "swizerland")
+                    {
+                        country.style.color = "green";
+                        message2.innerHTML = "Correct!";
+                    }
+                    else
+                    {
+                        country.style.color = "red";
+                        message2.innerHTML = "Incorrect";
+                    }
+                })
+            });
+        </script>
+
+    </head>
+    <body>
+
+        <div class="jumbotron">
+            <h1>Trivia!</h1>
+        </div>
+
+        <div class="container">
+
+            <div class="section">
+                <h2>Part 1: Multiple Choice </h2>
+                <hr>
+
+                <!-- TODO: Add multiple choice question here -->
+                <h3>What is the approximate ratio of people to sheep in New Zealand</h3>
+                <button id="ans1" class="incorrect">6 people per 1 sheep</button>
+                <button id="ans2" class="incorrect">3 people per 1 sheep</button>
+                <button id="ans3" class="incorrect">1 person per 1 sheep</button>
+                <button id="ans4" class="incorrect">1 person per 3 sheep</button>
+                <button id="answer">1 person per 6 sheep</button>
+                <p id="message" style="font-family: 'Montserrat', sans-serif;"></p>
+            </div>
+
+            <div class="section">
+                <h2>Part 2: Free Response</h2>
+                <hr>
+
+                <!-- TODO: Add free response question here -->
+                <h3>In which country is it illegal to own only one guinea pig, as a lone guinea pig might get lonely?</h3>
+                <input id="response" type="text">
+                <button id="button2">Check Answer</button>
+                <p id="message2" style="font-family: 'Montserrat', sans-serif;"></p>
+            </div>
+
+        </div>
+    </body>
+</html>
